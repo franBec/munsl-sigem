@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Layout from "@/components/layout/layout";
 import { ReactNode } from "react";
+import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Layout>{children}</Layout>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Layout>{children}</Layout>
+        </ThemeProvider>
       </body>
     </html>
   );
