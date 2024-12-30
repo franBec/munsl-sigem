@@ -9,6 +9,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import ModeToggle from "@/components/dark-mode/mode-toogle";
+import { NavUser } from "@/components/layout/nav-user";
+import * as React from "react";
 
 const Header = () => {
   return (
@@ -30,7 +32,14 @@ const Header = () => {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center gap-2">
+        <NavUser
+          user={{
+            name: "Fran Bec",
+            email: "20418091054",
+            avatar: "/avatars/shadcn.jpg",
+          }}
+        />
         <ModeToggle />
       </div>
     </header>
