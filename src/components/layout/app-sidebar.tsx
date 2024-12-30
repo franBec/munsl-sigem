@@ -161,8 +161,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { theme } = useTheme();
   const logoSrc =
     theme === "dark"
-      ? "/Escudo-Municipal-Blanco-2x.png"
-      : "/Escudo-Municipal-Azul-2x.png";
+      ? "/escudo-municipal-blanco-2x.png"
+      : "/escudo-municipal-azul-2x.png";
 
   return (
     <Sidebar collapsible="icon" {...props}>
