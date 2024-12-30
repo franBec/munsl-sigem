@@ -1,0 +1,6 @@
+*.md
+.next/
+.idea/
+node_modules/
+src/__generated__/
+pnpm-lock.yaml
