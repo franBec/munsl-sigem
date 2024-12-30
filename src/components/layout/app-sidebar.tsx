@@ -16,7 +16,6 @@ import {
 
 import { NavMain } from "@/components/layout/nav-main";
 import { NavProjects } from "@/components/layout/nav-projects";
-import { TeamSwitcher } from "@/components/layout/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -24,6 +23,9 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import Image from "next/image";
+import Link from "next/link";
+import { useTheme } from "next-themes";
 
 // This is sample data.
 const data = {
@@ -156,10 +158,24 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { theme } = useTheme();
+  const logoSrc =
+    theme === "dark"
+      ? "/Escudo-Municipal-Blanco-2x.png"
+      : "/Escudo-Municipal-Azul-2x.png";
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <Link href="/" className="pl-2">
+          <Image
+            src={logoSrc}
+            alt="Escudo Municipal"
+            width={173}
+            height={173}
+            style={{ height: "auto", maxWidth: "100%" }}
+          />
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
