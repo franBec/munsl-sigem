@@ -27,7 +27,7 @@ export function NavMain({ menu }: { menu: MenuProps }) {
           <SidebarGroupLabel key={group.groupLabel}>
             {group.groupLabel}
           </SidebarGroupLabel>
-          <SidebarMenu>
+          <SidebarMenu key={group.groupLabel}>
             {group.groupItems.map(item => (
               <Collapsible
                 key={item.title}
