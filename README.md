@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# munsl_sigem
 
-## Getting Started
+![escudo municipal](/public/escudo-municipal-blanco-2x.png)
 
-First, run the development server:
+Este proyecto es un **MVP (Producto Mínimo Viable)** de una posible reescritura del backend del sistema [SIGEM](https://sigem.sanluislaciudad.gob.ar/).
 
+## Objetivo del Proyecto
+
+El objetivo principal de este proyecto es crear una representación fiel del funcionamiento actual de SIGEM mientras se sientan las bases para una futura modernización. Este MVP forma parte de la primera fase de una serie de mejoras planificadas, que incluyen:
+
+1. **Migración de la lógica de negocio**:
+    - De Java 8 a Java 21.
+    - Abandonar el monolito basado en [Grails](https://grails.org/).
+    - Adoptar una arquitectura separada de frontend (Next.js 14) y backend (Groovy Spring Boot 3).
+
+2. **Prioridad en la representación actual**:
+    - Dado el alcance y la complejidad de esta transición, el objetivo inicial es replicar el comportamiento actual de manera fiel.
+    - Algunas "mejores prácticas" no se implementarán en esta etapa debido a limitaciones de tiempo y compatibilidad.
+
+## Limitaciones
+
+- Este proyecto es un MVP y no refleja el estado final de la modernización planificada.
+- Algunas prácticas y estructuras heredadas han sido mantenidas para garantizar una transición gradual.
+
+## Licencia
+
+Aún no se ha definido una licencia pública para este proyecto. Si el código permanece abierto, la licencia será especificada en futuras actualizaciones del repositorio.
+
+## Live demo
+
+[https://munsl-sigem.vercel.app/](https://munsl-sigem.vercel.app/)
+- Esta hosteado en una cuenta hobby de [vercel](https://vercel.com/).
+
+## Ejecuta en local
+
+Este proyecto utiliza [pnpm](https://pnpm.io/) como gestor de paquetes. Para iniciar el entorno de desarrollo, sigue estos pasos:
+
+1. Instala las dependencias del proyecto:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
+2. Inicia el servidor de desarrollo:
+```bash
+pnpm run dev
+```
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Este proyecto utiliza [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) para optimizar y cargar automáticamente [Geist](https://vercel.com/font), una nueva familia tipográfica de Vercel.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Autor
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Franco Exequiel Becvort <🐤/>
+- [Linkedin](https://www.linkedin.com/in/franco-becvort/)
+- [Website](https://pollito.dev/)
