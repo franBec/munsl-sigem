@@ -4,6 +4,7 @@ import "./globals.css";
 import Layout from "@/components/layout/layout";
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
+import NextAuthSessionProvider from "@/components/next-auth/next-auth-session-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -70,7 +71,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Layout>{children}</Layout>
+          <NextAuthSessionProvider>
+            <Layout>{children}</Layout>
+          </NextAuthSessionProvider>
         </ThemeProvider>
       </body>
     </html>

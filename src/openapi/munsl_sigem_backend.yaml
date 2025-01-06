@@ -22,10 +22,22 @@ paths:
       summary: Iniciar sesión
       responses:
         "200":
-          description: Inicio de sesión exitoso
+          description:
+            Inicio de sesión exitoso. Header con JWT y body con lista de
+            permisos asociados al JWT
+          content:
+            application/json:
+              schema:
+                description: Permisos de administrador
+                items:
+                  example: NIVEL_3_MENU_LATERAL
+                  type: string
+                type: array
           headers:
             Authorization:
               $ref: "#/components/headers/Authorization"
+        "401":
+          description: Inicio de sesión fallido. No body ni headers
         default:
           content:
             application/json:
@@ -126,10 +138,14 @@ components:
         password:
           description: Contraseña
           example: XXX
+          maxLength: 128
+          minLength: 3
           type: string
         username:
           description: Nombre de usuario del administrador o CUIT del ciudadano.
           example: 23215487369
+          maxLength: 32
+          minLength: 4
           type: string
       required:
         - password
