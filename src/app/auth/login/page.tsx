@@ -15,7 +15,8 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel, FormMessage,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,10 +40,11 @@ const Page = () => {
     const signInResponse = await signIn("credentials", {
       username: loginRequest.username,
       password: loginRequest.password,
-      callbackUrl: "/",
       redirect: false,
     });
-    if (!signInResponse?.ok) {
+    if (signInResponse?.ok) {
+      router.push("/");
+    } else {
       setLoginError(signInResponse?.error as string);
     }
   };
