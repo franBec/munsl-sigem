@@ -14,7 +14,7 @@ export default NextAuth({
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       async authorize(credentials, req) {
         if (!credentials) {
-          throw new Error("Missing ENV variable credentials");
+          throw new Error("Missing login form credentials record");
         }
 
         const secretKey = process.env.JWT_SECRET;
