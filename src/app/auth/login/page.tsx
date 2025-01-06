@@ -19,6 +19,8 @@ import {
 } from "@/components/ui/form";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { TriangleAlertIcon } from "lucide-react";
 
 const Page = () => {
   const { theme } = useTheme();
@@ -29,7 +31,7 @@ const Page = () => {
     router.push("/");
   }
 
-  const [loginError, setloginError] = useState<string | null>(null);
+  const [loginError, setLoginError] = useState<string | null>(null);
   const form = useForm<LoginRequest>({
     resolver: zodResolver(schemas.LoginRequest),
   });
@@ -37,12 +39,11 @@ const Page = () => {
     const signInResponse = await signIn("credentials", {
       username: loginRequest.username,
       password: loginRequest.password,
+      callbackUrl: "/",
       redirect: false,
     });
-    if (signInResponse?.ok) {
-      router.push("/");
-    } else {
-      setloginError(signInResponse?.error as string);
+    if (!signInResponse?.ok) {
+      setLoginError(signInResponse?.error as string);
     }
   };
   const logoSrc = theme === "dark" ? "/sigem-blanco.png" : "/sigem-azul.png";
@@ -65,6 +66,12 @@ const Page = () => {
                         Inicia sesión en tu cuenta SIGEM
                       </p>
                     </div>
+                    {loginError && (
+                      <Alert variant="default">
+                        <TriangleAlertIcon className="h-4 w-4" />
+                        <AlertTitle>{loginError}</AlertTitle>
+                      </Alert>
+                    )}
                     <div className="grid gap-2">
                       <FormField
                         control={form.control}

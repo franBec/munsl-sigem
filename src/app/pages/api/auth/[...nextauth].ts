@@ -24,7 +24,7 @@ export default NextAuth({
 
         const { username, password } = credentials;
 
-        const response = await login(
+        const {headers, data, status} = await login(
           { username, password },
           {
             baseURL: process.env.NEXT_PUBLIC_API_MUNSL_SIGEM_BACKEND_URL,
@@ -33,13 +33,15 @@ export default NextAuth({
             },
           }
         );
+        if(status !== 200){
+          throw new Error("Credenciales inválidas")
+        }
 
-        const permisos = response.data;
-        if (!permisos) {
+        if (!data) {
           throw new Error("Missing login response body");
         }
 
-        const token = response.headers?.["Authorization"];
+        const token = headers?.["Authorization"];
         if (!token) {
           throw new Error("Authorization header is missing");
         }
@@ -49,7 +51,7 @@ export default NextAuth({
           Buffer.from(secretKey, "base64")
         ) as jwt.JwtPayload;
         user.accessToken = token;
-        user.permisos = permisos;
+        user.permisos = data;
 
         return user as never;
       },
@@ -66,6 +68,6 @@ export default NextAuth({
     },
   },
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/auth/login",
   },
 });
