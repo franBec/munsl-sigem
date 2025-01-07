@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { version } from "../../../../package.json"
+import { version } from "../../../../package.json";
 
 const SidebarFooterInfo = () => {
   return (
