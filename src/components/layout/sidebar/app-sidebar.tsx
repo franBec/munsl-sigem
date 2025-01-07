@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import EscudoMunicipalCollapsable from "@/components/logo/escudo-municipal-collapsable";
 import { menu } from "@/components/layout/sidebar/menu";
+import SidebarFooterInfo from "@/components/layout/sidebar/sidebar-footer-info";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -25,7 +26,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroupMenu menu={menu} />
       </SidebarContent>
       <SidebarFooter>
-        <p className="text-xs">{"<🐤/> SIGEM version 0.0.1"}</p>
+        <SidebarFooterInfo />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

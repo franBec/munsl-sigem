@@ -1,6 +1,7 @@
 import React from "react";
 import SigemLogo from "@/components/logo/sigem-logo";
 import EscudoMunicipal from "@/components/logo/escudo-municipal";
+import SidebarFooterInfo from "@/components/layout/sidebar/sidebar-footer-info";
 
 const LoadingPlaceholder: React.FC = () => {
   return (
@@ -25,6 +26,9 @@ const LoadingPlaceholder: React.FC = () => {
               className="h-6 w-56 bg-sidebar-accent rounded animate-pulse"
             ></div>
           ))}
+          <div>
+            <SidebarFooterInfo />
+          </div>
         </div>
       </div>
 
