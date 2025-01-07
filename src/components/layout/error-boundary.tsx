@@ -44,7 +44,8 @@ function ErrorFallback({
         />
         <CardTitle>Sistema Integral de Gestión Municipal</CardTitle>
         <CardDescription>
-          Algo salió mal, lamentamos los inconvenientes. Esto es lo que puedes hacer:
+          Algo salió mal, lamentamos los inconvenientes. Esto es lo que puedes
+          hacer:
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex justify-end gap-2">

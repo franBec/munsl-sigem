@@ -24,7 +24,7 @@ const Header = () => {
               name:
                 session.user.usuario_displayname ||
                 session.user.usuarioCiudad_persona_firstName,
-              email:
+              dniCuil:
                 session.user.usuario_dni ||
                 session.user.usuarioCiudad_persona_cuil,
               avatar: session.user?.image || "/default-avatar.jpg",
