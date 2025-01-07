@@ -22,6 +22,8 @@ import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { TriangleAlertIcon } from "lucide-react";
+import { UNAUTHORIZED_ERROR_MESSAGE } from "../../../../next-auth-session-user";
+import { useErrorBoundary } from "react-error-boundary";
 
 const Page = () => {
   const { theme } = useTheme();
@@ -32,11 +34,14 @@ const Page = () => {
     router.push("/");
   }
 
+  const { showBoundary } = useErrorBoundary();
+
   const [loginError, setLoginError] = useState<string | null>(null);
   const form = useForm<LoginRequest>({
     resolver: zodResolver(schemas.LoginRequest),
   });
   const onSubmit: SubmitHandler<LoginRequest> = async loginRequest => {
+    setLoginError(null);
     const signInResponse = await signIn("credentials", {
       username: loginRequest.username,
       password: loginRequest.password,
@@ -44,8 +49,10 @@ const Page = () => {
     });
     if (signInResponse?.ok) {
       router.push("/");
+    } else if (signInResponse?.error === UNAUTHORIZED_ERROR_MESSAGE) {
+      setLoginError(UNAUTHORIZED_ERROR_MESSAGE);
     } else {
-      setLoginError(signInResponse?.error as string);
+      showBoundary(signInResponse?.error);
     }
   };
   const logoSrc = theme === "dark" ? "/sigem-blanco.png" : "/sigem-azul.png";

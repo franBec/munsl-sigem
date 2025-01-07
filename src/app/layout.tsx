@@ -5,6 +5,7 @@ import Layout from "@/components/layout/layout";
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import NextAuthSessionProvider from "@/components/next-auth/next-auth-session-provider";
+import { ErrorBoundary } from "@/components/layout/error-boundary";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -71,9 +72,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NextAuthSessionProvider>
-            <Layout>{children}</Layout>
-          </NextAuthSessionProvider>
+          <ErrorBoundary>
+            <NextAuthSessionProvider>
+              <Layout>{children}</Layout>
+            </NextAuthSessionProvider>
+          </ErrorBoundary>
         </ThemeProvider>
       </body>
     </html>

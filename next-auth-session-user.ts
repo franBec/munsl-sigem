@@ -13,3 +13,6 @@ export interface NextAuthSessionUser extends JWT {
   accessToken: string;
   permisos: string[];
 }
+
+export const UNAUTHORIZED_ERROR_MESSAGE =
+  "Usuario y/o contraseña son incorrectos";
