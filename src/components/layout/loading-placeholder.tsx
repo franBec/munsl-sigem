@@ -5,8 +5,7 @@ import EscudoMunicipal from "@/components/logo/escudo-municipal";
 const LoadingPlaceholder: React.FC = () => {
   return (
     <div className="flex h-screen">
-      {/*not show this div if screen is small*/}
-      <div className="w-64 bg-sidebar pl-4 border border-sidebar-border">
+      <div className="w-64 bg-sidebar pl-4 border border-sidebar-border hidden sm:block">
         <div className="py-2">
           <EscudoMunicipal />
         </div>
@@ -26,6 +25,7 @@ const LoadingPlaceholder: React.FC = () => {
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="flex-1 flex flex-col space-y-6">
         <div className="border border-sidebar-border h-16 flex justify-end items-center">
           <div className="mr-4 h-8 w-48 bg-sidebar-accent rounded animate-pulse"></div>
