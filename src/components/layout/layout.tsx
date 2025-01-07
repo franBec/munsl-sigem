@@ -1,8 +1,8 @@
 "use client";
-import { AppSidebar } from "@/components/layout/app-sidebar";
+import { AppSidebar } from "@/components/layout/sidebar/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
-import Header from "@/components/layout/header";
+import Header from "@/components/layout/header/header";
 import { useSession } from "next-auth/react";
 import LoadingPlaceholder from "@/components/layout/loading-placeholder";
 
@@ -15,7 +15,7 @@ const Layout = ({ children }: Readonly<LayoutProps>) => {
 
   return (
     <>
-      {status === "loading" ? (
+      {status !== "loading" ? (
         <LoadingPlaceholder />
       ) : (
         <SidebarProvider>

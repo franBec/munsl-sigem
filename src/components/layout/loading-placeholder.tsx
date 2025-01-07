@@ -5,6 +5,7 @@ import EscudoMunicipal from "@/components/logo/escudo-municipal";
 const LoadingPlaceholder: React.FC = () => {
   return (
     <div className="flex h-screen">
+      {/*not show this div if screen is small*/}
       <div className="w-64 bg-sidebar pl-4 border border-sidebar-border">
         <div className="py-2">
           <EscudoMunicipal />

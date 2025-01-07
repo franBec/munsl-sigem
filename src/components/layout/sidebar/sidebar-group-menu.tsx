@@ -17,9 +17,9 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { MenuProps } from "@/components/layout/menu";
+import { MenuProps } from "@/components/layout/sidebar/menu";
 
-export function NavMain({ menu }: { menu: MenuProps }) {
+export function SidebarGroupMenu({ menu }: { menu: MenuProps }) {
   return (
     <SidebarGroup>
       {menu.map(group => (

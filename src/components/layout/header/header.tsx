@@ -2,7 +2,7 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import ModeToggle from "@/components/dark-mode/mode-toogle";
-import { NavUser } from "@/components/layout/nav-user";
+import { DropdownUser } from "@/components/layout/header/dropdown-user";
 import { useSession } from "next-auth/react";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-2">
         {session ? (
-          <NavUser
+          <DropdownUser
             user={{
               name:
                 session.user.usuario_displayname ||

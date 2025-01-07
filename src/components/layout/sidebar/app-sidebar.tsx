@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { NavMain } from "@/components/layout/nav-main";
+import { SidebarGroupMenu } from "@/components/layout/sidebar/sidebar-group-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -11,7 +11,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import EscudoMunicipalCollapsable from "@/components/logo/escudo-municipal-collapsable";
-import { menu } from "@/components/layout/menu";
+import { menu } from "@/components/layout/sidebar/menu";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -22,7 +22,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain menu={menu} />
+        <SidebarGroupMenu menu={menu} />
       </SidebarContent>
       <SidebarFooter>
         <p className="text-xs">{"<🐤/> SIGEM version 0.0.1"}</p>
