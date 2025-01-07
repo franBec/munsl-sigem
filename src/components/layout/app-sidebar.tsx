@@ -10,14 +10,16 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import EscudoMunicipal from "@/components/layout/escudo-municipal";
+import EscudoMunicipalCollapsable from "@/components/logo/escudo-municipal-collapsable";
 import { menu } from "@/components/layout/menu";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <EscudoMunicipal />
+        <div className="pl-2">
+          <EscudoMunicipalCollapsable />
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <NavMain menu={menu} />

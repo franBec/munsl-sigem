@@ -1,30 +1,15 @@
-"use client";
-
-import { useTheme } from "next-themes";
-import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FileText, UserCircle } from "lucide-react";
+import SigemLogo from "@/components/logo/sigem-logo";
 
 export default function Home() {
-  const { theme } = useTheme();
-  const logoSrc = theme === "dark" ? "/sigem-blanco.png" : "/sigem-azul.png";
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
       <div className="text-center">
-        <Image
-          src={logoSrc}
-          alt="SIGEM"
-          width={250}
-          height={250}
-          className="mx-auto mb-8"
-          style={{ height: "auto", maxWidth: "100%" }}
-        />
-        <h1 className="text-4xl font-bold tracking-tight mb-4">
-          Sistema Integral de Gestión Municipal
-        </h1>
+        <SigemLogo/>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           El Sistema Integral de Gestión Municipal (SIGEM) de la ciudad de San
           Luis es una plataforma diseñada para facilitar a los ciudadanos la
@@ -84,7 +69,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="default" className="w-full sm:w-auto">
-                <Link href="/login">Iniciar sesión</Link>
+                <Link href="/auth/login">Iniciar sesión</Link>
               </Button>
               <Button asChild variant="secondary" className="w-full sm:w-auto">
                 <Link href="/create-account">Crear una cuenta</Link>

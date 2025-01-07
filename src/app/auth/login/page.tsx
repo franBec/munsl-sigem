@@ -26,20 +26,17 @@ import { UNAUTHORIZED_ERROR_MESSAGE } from "../../../../next-auth-session-user";
 import { useErrorBoundary } from "react-error-boundary";
 
 const Page = () => {
-  const { theme } = useTheme();
-
   const router = useRouter();
   const { status } = useSession();
   if (status === "authenticated") {
     router.push("/");
   }
 
-  const { showBoundary } = useErrorBoundary();
-
   const [loginError, setLoginError] = useState<string | null>(null);
   const form = useForm<LoginRequest>({
     resolver: zodResolver(schemas.LoginRequest),
   });
+  const { showBoundary } = useErrorBoundary();
   const onSubmit: SubmitHandler<LoginRequest> = async loginRequest => {
     setLoginError(null);
     const signInResponse = await signIn("credentials", {
@@ -55,6 +52,8 @@ const Page = () => {
       showBoundary(signInResponse?.error);
     }
   };
+
+  const { theme } = useTheme();
   const logoSrc = theme === "dark" ? "/sigem-blanco.png" : "/sigem-azul.png";
 
   return (
