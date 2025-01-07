@@ -5,11 +5,10 @@ import { ArrowRight, FileText, UserCircle } from "lucide-react";
 import SigemLogo from "@/components/logo/sigem-logo";
 
 export default function Home() {
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
       <div className="text-center">
-        <SigemLogo/>
+        <SigemLogo />
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           El Sistema Integral de Gestión Municipal (SIGEM) de la ciudad de San
           Luis es una plataforma diseñada para facilitar a los ciudadanos la

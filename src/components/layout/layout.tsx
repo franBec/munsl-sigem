@@ -15,7 +15,7 @@ const Layout = ({ children }: Readonly<LayoutProps>) => {
 
   return (
     <>
-      {status !== "loading" ? (
+      {status === "loading" ? (
         <LoadingPlaceholder />
       ) : (
         <SidebarProvider>

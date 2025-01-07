@@ -11,9 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  SidebarMenuButton,
-} from "@/components/ui/sidebar";
+import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import Link from "next/link";

@@ -15,7 +15,7 @@ const EscudoMunicipalCollapsable = () => {
         ? "/escudo-municipal-azul-2x.png"
         : "/escudo-municipal-azul-2x-square.png";
 
-  return <EscudoMunicipal imageSrc={imageSrc} />
+  return <EscudoMunicipal imageSrc={imageSrc} />;
 };
 
 export default EscudoMunicipalCollapsable;

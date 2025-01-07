@@ -10,16 +10,19 @@ const LoadingPlaceholder: React.FC = () => {
           <EscudoMunicipal />
         </div>
         <div className="space-y-2 mt-2">
-          <div className="h-6 w-48 bg-sidebar-accent rounded animate-pulse"></div>
-          <div className="space-y-2 justify-items-end mr-12">
-            <div className="h-6 w-40 bg-sidebar-accent rounded animate-pulse"></div>
-            <div className="h-6 w-40 bg-sidebar-accent rounded animate-pulse"></div>
-            <div className="h-6 w-40 bg-sidebar-accent rounded animate-pulse"></div>
+          <div className="h-6 w-56 bg-sidebar-accent rounded animate-pulse"></div>
+          <div className="space-y-2 justify-items-end mr-4">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className="h-6 w-48 bg-sidebar-accent rounded animate-pulse"
+              ></div>
+            ))}
           </div>
           {[...Array(16)].map((_, i) => (
             <div
               key={i}
-              className="h-6 w-48 bg-sidebar-accent rounded animate-pulse"
+              className="h-6 w-56 bg-sidebar-accent rounded animate-pulse"
             ></div>
           ))}
         </div>
