@@ -27,7 +27,6 @@ function ErrorFallback({
   error: Error;
   resetErrorBoundary: () => void;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Card className="max-w-2xl mx-auto mt-20">
@@ -44,31 +43,39 @@ function ErrorFallback({
           Reintentar
         </Button>
         <Button asChild>
-          <Link onClick={resetErrorBoundary} href="/">
+          <Link onClick={resetErrorBoundary} href="/public">
             Ir al menú principal
           </Link>
         </Button>
       </CardFooter>
       <CardContent>
-        <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-          <CollapsibleTrigger asChild>
-            <Button variant="outline" className="w-full justify-between">
-              Detalles del error
-              {isOpen ? (
-                <ChevronUp className="h-4 w-4" />
-              ) : (
-                <ChevronDown className="h-4 w-4" />
-              )}
-            </Button>
-          </CollapsibleTrigger>
-          <CollapsibleContent>
-            <pre className="bg-muted p-4 rounded-md text-sm overflow-auto mt-2">
-              {error as unknown as string}
-            </pre>
-          </CollapsibleContent>
-        </Collapsible>
+        <ErrorDetails error={error} />
       </CardContent>
     </Card>
+  );
+}
+
+export function ErrorDetails({ error }: { error: Error }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <CollapsibleTrigger asChild>
+        <Button variant="outline" className="w-full justify-between">
+          Detalles del error
+          {isOpen ? (
+            <ChevronUp className="h-4 w-4" />
+          ) : (
+            <ChevronDown className="h-4 w-4" />
+          )}
+        </Button>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <pre className="bg-muted p-4 rounded-md text-sm overflow-auto mt-2">
+          {error as unknown as string}
+        </pre>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 

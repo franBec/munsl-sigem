@@ -2,6 +2,7 @@
 import { version as frontendVersion } from "../../../package.json";
 import { SigemLogoWithTitle } from "@/components/logo/sigem-logo";
 import { useGetActuatorInfo } from "@/__generated__/api/munsl_sigem_backend/munsl-sigem-backend-api";
+import { ErrorDetails } from "@/components/layout/error-boundary";
 
 const Page = () => {
   const {
@@ -84,6 +85,7 @@ const Page = () => {
           </tr>
         </tbody>
       </table>
+      {error && <ErrorDetails error={error}/>}
       <p className="mt-8 text-center text-sm text-muted-foreground">
         Made with love by{" "}
         <a
