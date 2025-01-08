@@ -51,10 +51,7 @@ const LoginForm = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="p-6 md:p-8"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="p-6 md:p-8">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center text-center">
             <h1 className="text-2xl font-bold">Bienvenido</h1>
@@ -111,10 +108,7 @@ const LoginForm = () => {
           </Button>
           <div className="text-center text-sm">
             ¿No tiene cuenta?{" "}
-            <Link
-              href="/auth/signup"
-              className="underline underline-offset-4"
-            >
+            <Link href="/auth/signup" className="underline underline-offset-4">
               Crear cuenta aquí
             </Link>
           </div>

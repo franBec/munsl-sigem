@@ -32,7 +32,7 @@ function ErrorFallback({
   return (
     <Card className="max-w-2xl mx-auto mt-20">
       <CardHeader className="text-center">
-        <SigemLogo/>
+        <SigemLogo />
         <CardTitle>Sistema Integral de Gestión Municipal</CardTitle>
         <CardDescription>
           Algo salió mal, lamentamos los inconvenientes. Esto es lo que puedes

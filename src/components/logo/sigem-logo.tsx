@@ -5,7 +5,7 @@ import Image from "next/image";
 const SigemLogoWithTitle = () => {
   return (
     <>
-      <SigemLogo/>
+      <SigemLogo />
       <h1 className="text-4xl font-bold tracking-tight">
         Sistema Integral de Gestión Municipal
       </h1>

@@ -5,7 +5,7 @@ const Page = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
       <div>
-        <SigemLogoWithTitle/>
+        <SigemLogoWithTitle />
       </div>
       <table className="table-auto border-collapse border border-gray-400">
         <thead>
