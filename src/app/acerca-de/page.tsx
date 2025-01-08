@@ -1,7 +1,21 @@
+"use client";
 import { version as frontendVersion } from "../../../package.json";
 import { SigemLogoWithTitle } from "@/components/logo/sigem-logo";
+import { useGetActuatorInfo } from "@/__generated__/api/munsl_sigem_backend/munsl-sigem-backend-api";
 
 const Page = () => {
+  const {
+    isPending,
+    isError,
+    data: response,
+    error,
+  } = useGetActuatorInfo({
+    axios: { baseURL: process.env.NEXT_PUBLIC_API_MUNSL_SIGEM_BACKEND_URL },
+  });
+
+  const backendVersion = response?.data.build?.version || "-";
+  const backendStatus = isError ? "No hay conexión" : "OK";
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
       <div>
@@ -14,6 +28,7 @@ const Page = () => {
             <th className="border border-foreground px-4 py-2">Rol</th>
             <th className="border border-foreground px-4 py-2">Tecnología</th>
             <th className="border border-foreground px-4 py-2">Versión</th>
+            <th className="border border-foreground px-4 py-2">Estado</th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +50,7 @@ const Page = () => {
             <td className="border border-foreground px-4 py-2">
               {frontendVersion}
             </td>
+            <td className="border border-foreground px-4 py-2">OK</td>
           </tr>
           <tr>
             <td className="border border-foreground px-4 py-2">
@@ -51,7 +67,20 @@ const Page = () => {
             <td className="border border-foreground px-4 py-2">
               Groovy Spring Boot 3.4.0
             </td>
-            <td className="border border-foreground px-4 py-2">-</td>
+            <td className="border border-foreground px-4 py-2">
+              {isPending ? (
+                <span className="animate-pulse bg-gray-300 rounded w-16 h-4 inline-block"></span>
+              ) : (
+                backendVersion
+              )}
+            </td>
+            <td className="border border-foreground px-4 py-2">
+              {isPending ? (
+                <span className="animate-pulse bg-gray-300 rounded w-8 h-4 inline-block"></span>
+              ) : (
+                backendStatus
+              )}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -72,4 +101,5 @@ const Page = () => {
     </div>
   );
 };
+
 export default Page;

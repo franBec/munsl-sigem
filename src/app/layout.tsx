@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import NextAuthSessionProvider from "@/components/next-auth/next-auth-session-provider";
 import { ErrorBoundary } from "@/components/layout/error-boundary";
+import ClientProvider from "@/components/react-query/client-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -62,23 +63,25 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <ClientProvider>
+      <html lang="es">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <ErrorBoundary>
-            <NextAuthSessionProvider>
-              <Layout>{children}</Layout>
-            </NextAuthSessionProvider>
-          </ErrorBoundary>
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ErrorBoundary>
+              <NextAuthSessionProvider>
+                <Layout>{children}</Layout>
+              </NextAuthSessionProvider>
+            </ErrorBoundary>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClientProvider>
   );
 }
