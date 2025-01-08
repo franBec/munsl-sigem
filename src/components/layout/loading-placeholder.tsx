@@ -1,5 +1,5 @@
 import React from "react";
-import SigemLogo from "@/components/logo/sigem-logo";
+import { SigemLogoWithTitle } from "@/components/logo/sigem-logo";
 import EscudoMunicipal from "@/components/logo/escudo-municipal";
 import SidebarFooterInfo from "@/components/layout/sidebar/sidebar-footer-info";
 
@@ -41,7 +41,7 @@ const LoadingPlaceholder: React.FC = () => {
 
         <div className="text-center px-4 py-10 space-y-12">
           <div>
-            <SigemLogo />
+            <SigemLogoWithTitle />
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center space-x-2">

@@ -3,7 +3,6 @@
 import { ReactNode, useState } from "react";
 import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,7 +18,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useTheme } from "next-themes";
+import { SigemLogo } from "@/components/logo/sigem-logo";
 
 function ErrorFallback({
   error,
@@ -29,19 +28,11 @@ function ErrorFallback({
   resetErrorBoundary: () => void;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme } = useTheme();
-  const logoSrc = theme === "dark" ? "/sigem-blanco.png" : "/sigem-azul.png";
 
   return (
     <Card className="max-w-2xl mx-auto mt-20">
       <CardHeader className="text-center">
-        <Image
-          src={logoSrc}
-          alt="SIGEM"
-          width={250}
-          height={250}
-          className="mx-auto mb-4"
-        />
+        <SigemLogo/>
         <CardTitle>Sistema Integral de Gestión Municipal</CardTitle>
         <CardDescription>
           Algo salió mal, lamentamos los inconvenientes. Esto es lo que puedes

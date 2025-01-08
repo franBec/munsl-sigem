@@ -1,11 +1,11 @@
 import { version as frontendVersion } from "../../../package.json";
-import SigemLogo from "@/components/logo/sigem-logo";
+import { SigemLogoWithTitle } from "@/components/logo/sigem-logo";
 
 const Page = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
       <div>
-        <SigemLogo/>
+        <SigemLogoWithTitle/>
       </div>
       <table className="table-auto border-collapse border border-gray-400">
         <thead>
