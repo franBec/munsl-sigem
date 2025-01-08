@@ -7,6 +7,20 @@ info:
 servers:
   - url: http://localhost:8080
 paths:
+  /actuator/info:
+    get:
+      tags:
+        - Info
+      description: Información de compilación de la aplicación
+      summary: Obtiene información de compilación de la aplicación
+      responses:
+        "200":
+          description:
+            Respuesta exitosa con información de compilación de la aplicación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Build"
   /auth/login:
     post:
       tags:
@@ -36,42 +50,18 @@ paths:
           headers:
             Authorization:
               $ref: "#/components/headers/Authorization"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMethodArgumentNotValidException"
+          description: Argumentos no válidos
         "401":
-          description: Inicio de sesión fallido. No body ni headers
-        default:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-          description: Error inesperado
-  /auth/permisos:
-    get:
-      tags:
-        - Auth
-      description: Recupera todos los permisos asociados al JWT
-      operationId: getPermisosByJwt
-      summary: Recupera todos los permisos asociados al JWT
-      parameters:
-        - $ref: "#/components/parameters/AuthorizationHeader"
-      responses:
-        "200":
-          description: Lista de permisos asociados al JWT
-          content:
-            application/json:
-              schema:
-                description: Permisos de administrador
-                items:
-                  example: NIVEL_3_MENU_LATERAL
-                  type: string
-                type: array
-          headers:
-            Authorization:
-              description: JWT validado
-              schema:
-                type: string
-                example:
-                  Bearer
-                  eyJhbGciOiJIUzI1NiJ9.eyJlc3RhZG8iOnRydWUsImRpc3BsYXlOYW1lIjoiTWFydGluIFZpbGxlZ2FzIiwiZXh0ZXJuYWxHdWlkIjoiQjdFRTUyMUItOTRFNC00QzVCLThBOEQtODE4Q0E2QkQ4REYwIiwiaWQiOjcyNCwidXNlck5hbWUiOiJtdmlsbGVnYXMiLCJkbmkiOiIyNzE2NzE4NSIsImZlY2hhQ2FtYmlvQ2xhdmUiOiIyMDE5LTEyLTEzIDE2OjQzOjQxLjAwMCIsInN1YiI6Im12aWxsZWdhcyIsImlhdCI6MTcxNDQ3ODYwMSwiZXhwIjoxNzE0NDgyMjAxfQ.3KfMDt6eR2_XiuNt_U_eXyED7VYeuAjy7BOH9Jy4qvQ
+                $ref: "#/components/schemas/ErrorBadCredentials"
+          description: Inicio de sesión fallido
         default:
           content:
             application/json:
@@ -85,7 +75,7 @@ components:
       schema:
         example:
           "Bearer
-          eyJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjo3MjQsInVzdWFyaW9fZGlzcGxheW5hbWUiOiJNYXJ0aW4gVmlsbGVnYXMiLCJ1c3VhcmlvX2RuaSI6IjI3MTY3MTg1IiwidXN1YXJpb0NpdWRhZF9wZXJzb25hX2ZpcnN0TmFtZSI6IiIsInVzdWFyaW9DaXVkYWRfcGVyc29uYV9sYXN0TmFtZSI6IiIsInVzdWFyaW9DaXVkYWRfcGVyc29uYV9jdWlsIjoiIiwidXN1YXJpb0NpdWRhZF9pZCI6IiIsInVzdWFyaW9fdXNlck5hbWUiOiJtdmlsbGVnYXMiLCJzdWIiOiJtdmlsbGVnYXMiLCJpYXQiOjE3MzU4NzIzNDQsImV4cCI6MTczNTg3Mjk0NH0.VLWrL6joN_NWezmXA1TfaSPIASy0r2Kz5B_khsPBi8w"
+          eyJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvQ2l1ZGFkX3BlcnNvbmFfbGFzdE5hbWUiOiIiLCJ1c3VhcmlvQ2l1ZGFkX3BlcnNvbmFfZmlyc3ROYW1lIjoiIiwidXN1YXJpb19kbmkiOiIyNzE2NzE4NSIsInVzdWFyaW9DaXVkYWRfcGVyc29uYV9jdWlsIjoiIiwidXN1YXJpb19kaXNwbGF5bmFtZSI6Ik1hcnRpbiBWaWxsZWdhcyIsInVzdWFyaW9fdXNlck5hbWUiOiJtdmlsbGVnYXMiLCJzdWIiOiJtdmlsbGVnYXMiLCJpYXQiOjE3MzYzMzc4NjAsImV4cCI6MTczNjM4MTA2MH0.3Gxz_6885gIMFkUGPEweCJbl-FW_MFsINP1cFc3alYY"
         format: jwt
         type: string
   parameters:
@@ -97,19 +87,42 @@ components:
       schema:
         example:
           "Bearer
-          eyJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjo3MjQsInVzdWFyaW9fZGlzcGxheW5hbWUiOiJNYXJ0aW4gVmlsbGVnYXMiLCJ1c3VhcmlvX2RuaSI6IjI3MTY3MTg1IiwidXN1YXJpb0NpdWRhZF9wZXJzb25hX2ZpcnN0TmFtZSI6IiIsInVzdWFyaW9DaXVkYWRfcGVyc29uYV9sYXN0TmFtZSI6IiIsInVzdWFyaW9DaXVkYWRfcGVyc29uYV9jdWlsIjoiIiwidXN1YXJpb0NpdWRhZF9pZCI6IiIsInVzdWFyaW9fdXNlck5hbWUiOiJtdmlsbGVnYXMiLCJzdWIiOiJtdmlsbGVnYXMiLCJpYXQiOjE3MzU4NzIzNDQsImV4cCI6MTczNTg3Mjk0NH0.VLWrL6joN_NWezmXA1TfaSPIASy0r2Kz5B_khsPBi8w"
+          eyJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvQ2l1ZGFkX3BlcnNvbmFfbGFzdE5hbWUiOiIiLCJ1c3VhcmlvQ2l1ZGFkX3BlcnNvbmFfZmlyc3ROYW1lIjoiIiwidXN1YXJpb19kbmkiOiIyNzE2NzE4NSIsInVzdWFyaW9DaXVkYWRfcGVyc29uYV9jdWlsIjoiIiwidXN1YXJpb19kaXNwbGF5bmFtZSI6Ik1hcnRpbiBWaWxsZWdhcyIsInVzdWFyaW9fdXNlck5hbWUiOiJtdmlsbGVnYXMiLCJzdWIiOiJtdmlsbGVnYXMiLCJpYXQiOjE3MzYzMzc4NjAsImV4cCI6MTczNjM4MTA2MH0.3Gxz_6885gIMFkUGPEweCJbl-FW_MFsINP1cFc3alYY"
         format: jwt
         type: string
   schemas:
+    Build:
+      properties:
+        artifact:
+          description: Nombre del artefacto
+          example: "munsl_sigem_backend"
+          type: string
+        group:
+          description: Grupo de organización de la aplicación
+          example: "ar.gob.sanluislaciudad"
+          type: string
+        name:
+          description: Nombre de la aplicación
+          example: "munsl_sigem_backend"
+          type: string
+        time:
+          description: Fecha de la compilación en formato ISO 8601
+          example: "2024-01-04T15:30:00Z"
+          type: string
+        version:
+          description: Versión de la aplicación
+          example: "0.0.1-SNAPSHOT"
+          type: string
+      type: object
     Error:
       properties:
         detail:
           description: Descripción del problema
-          example: No value present
+          example: "Descripción del problema"
           type: string
         instance:
           description: El endpoint donde el problema ocurrió
-          example: "/generate"
+          example: "/"
           type: string
         status:
           description: HTTP status code
@@ -117,7 +130,7 @@ components:
           type: integer
         title:
           description: Nombre del problema
-          example: "NoSuchElementException"
+          example: "Exception"
           type: string
         timestamp:
           description: Fecha en formato ISO 8601
@@ -133,17 +146,41 @@ components:
           example: "about:blank"
           type: string
       type: object
+    ErrorBadCredentials:
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            detail:
+              example: "Bad credentials"
+            instance:
+              example: "/auth/login"
+            status:
+              example: 401
+            title:
+              example: "BadCredentialsException"
+    ErrorMethodArgumentNotValidException:
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            detail:
+              example: "Validation failed for argument[...]"
+            status:
+              example: 400
+            title:
+              example: "MethodArgumentNotValidException"
     LoginRequest:
       properties:
         password:
           description: Contraseña
-          example: XXX
+          example: "XXX"
           maxLength: 128
           minLength: 3
           type: string
         username:
-          description: Nombre de usuario del administrador o CUIT del ciudadano.
-          example: 23215487369
+          description: Nombre de usuario del administrador o CUIT del ciudadano
+          example: "23215487369"
           maxLength: 32
           minLength: 4
           type: string
