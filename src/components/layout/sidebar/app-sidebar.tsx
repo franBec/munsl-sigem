@@ -10,7 +10,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import EscudoMunicipalCollapsable from "@/components/logo/escudo-municipal-collapsable";
+import { EscudoMunicipalCollapsable } from "@/components/logo/escudo-municipal";
 import { menu } from "@/components/layout/sidebar/menu";
 import SidebarFooterInfo from "@/components/layout/sidebar/sidebar-footer-info";
 
