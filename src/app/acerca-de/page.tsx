@@ -85,7 +85,11 @@ const Page = () => {
           </tr>
         </tbody>
       </table>
-      {error && <ErrorDetails error={error}/>}
+      {error && (
+        <div className="max-w-xl w-full mx-auto">
+          <ErrorDetails error={error} />
+        </div>
+      )}
       <p className="mt-8 text-center text-sm text-muted-foreground">
         Made with love by{" "}
         <a

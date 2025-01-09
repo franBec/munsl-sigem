@@ -20,14 +20,21 @@ import {
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { SigemLogo } from "@/components/logo/sigem-logo";
 
+export function ErrorBoundary({ children }: { children: ReactNode }) {
+  return (
+    <ReactErrorBoundary FallbackComponent={ErrorFallback}>
+      {children}
+    </ReactErrorBoundary>
+  );
+}
+
 function ErrorFallback({
   error,
   resetErrorBoundary,
 }: {
-  error: Error;
+  error: unknown;
   resetErrorBoundary: () => void;
 }) {
-
   return (
     <Card className="max-w-2xl mx-auto mt-20">
       <CardHeader className="text-center">
@@ -55,8 +62,15 @@ function ErrorFallback({
   );
 }
 
-export function ErrorDetails({ error }: { error: Error }) {
+export function ErrorDetails({ error }: { error: unknown }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  let errorCollapsibleContent: string;
+  if (typeof error === "string") {
+    errorCollapsibleContent = error;
+  } else {
+    errorCollapsibleContent = JSON.stringify(error, null, 2);
+  }
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -72,17 +86,9 @@ export function ErrorDetails({ error }: { error: Error }) {
       </CollapsibleTrigger>
       <CollapsibleContent>
         <pre className="bg-muted p-4 rounded-md text-sm overflow-auto mt-2">
-          {error as unknown as string}
+          {errorCollapsibleContent}
         </pre>
       </CollapsibleContent>
     </Collapsible>
-  );
-}
-
-export function ErrorBoundary({ children }: { children: ReactNode }) {
-  return (
-    <ReactErrorBoundary FallbackComponent={ErrorFallback}>
-      {children}
-    </ReactErrorBoundary>
   );
 }
