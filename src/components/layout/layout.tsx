@@ -4,7 +4,8 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
 import Header from "@/components/layout/header/header";
 import { useSession } from "next-auth/react";
-import LoadingPlaceholder from "@/components/layout/loading-placeholder";
+import LoadingSkeleton from "@/components/layout/loading-skeleton";
+import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,9 +15,14 @@ const Layout = ({ children }: Readonly<LayoutProps>) => {
   const { status } = useSession();
 
   return (
-    <>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
       {status === "loading" ? (
-        <LoadingPlaceholder />
+        <LoadingSkeleton />
       ) : (
         <SidebarProvider>
           <AppSidebar />
@@ -28,7 +34,7 @@ const Layout = ({ children }: Readonly<LayoutProps>) => {
           </SidebarInset>
         </SidebarProvider>
       )}
-    </>
+    </ThemeProvider>
   );
 };
 export default Layout;

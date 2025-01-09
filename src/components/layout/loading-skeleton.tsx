@@ -3,7 +3,7 @@ import { SigemLogoWithTitle } from "@/components/logo/sigem-logo";
 import EscudoMunicipal from "@/components/logo/escudo-municipal";
 import SidebarFooterInfo from "@/components/layout/sidebar/sidebar-footer-info";
 
-const LoadingPlaceholder: React.FC = () => {
+const LoadingSkeleton: React.FC = () => {
   return (
     <div className="flex h-screen">
       <div className="w-64 bg-sidebar pl-4 border border-sidebar-border hidden sm:block">
@@ -32,7 +32,6 @@ const LoadingPlaceholder: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col space-y-6">
         <div className="border border-sidebar-border h-16 flex justify-end items-center">
           <div className="mr-4 h-8 w-48 bg-sidebar-accent rounded animate-pulse"></div>
@@ -56,4 +55,4 @@ const LoadingPlaceholder: React.FC = () => {
   );
 };
 
-export default LoadingPlaceholder;
+export default LoadingSkeleton;

@@ -50,7 +50,7 @@ function ErrorFallback({
           Reintentar
         </Button>
         <Button asChild>
-          <Link onClick={resetErrorBoundary} href="/public">
+          <Link onClick={resetErrorBoundary} href="/">
             Ir al menú principal
           </Link>
         </Button>
