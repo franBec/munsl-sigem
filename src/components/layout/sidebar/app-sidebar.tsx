@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { SidebarGroupMenu } from "@/components/layout/sidebar/sidebar-group-menu";
@@ -11,7 +9,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { EscudoMunicipalCollapsable } from "@/components/logo/escudo-municipal";
-import { menu } from "@/components/layout/sidebar/menu";
 import SidebarFooterInfo from "@/components/layout/sidebar/sidebar-footer-info";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -23,7 +20,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroupMenu menu={menu} />
+        <SidebarGroupMenu />
       </SidebarContent>
       <SidebarFooter>
         <SidebarFooterInfo />
