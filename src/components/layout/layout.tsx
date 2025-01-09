@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 import Header from "@/components/layout/header/header";
 import { useSession } from "next-auth/react";
 import LoadingSkeleton from "@/components/layout/loading-skeleton";
-import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,12 +14,7 @@ const Layout = ({ children }: Readonly<LayoutProps>) => {
   const { status } = useSession();
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
+    <>
       {status === "loading" ? (
         <LoadingSkeleton />
       ) : (
@@ -34,7 +28,7 @@ const Layout = ({ children }: Readonly<LayoutProps>) => {
           </SidebarInset>
         </SidebarProvider>
       )}
-    </ThemeProvider>
+    </>
   );
 };
 export default Layout;
