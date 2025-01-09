@@ -1,5 +1,5 @@
 "use client";
-import { version as frontendVersion } from "../../../package.json";
+import packageJson from "../../../package.json";
 import { SigemLogoWithTitle } from "@/components/logo/sigem-logo";
 import { useGetActuatorInfo } from "@/__generated__/api/munsl_sigem_backend/munsl-sigem-backend-api";
 import { ErrorDetails } from "@/components/layout/error-boundary";
@@ -49,7 +49,7 @@ const Page = () => {
               Next.js 14.2.16
             </td>
             <td className="border border-foreground px-4 py-2">
-              {frontendVersion}
+              {packageJson.version}
             </td>
             <td className="border border-foreground px-4 py-2">OK</td>
           </tr>
