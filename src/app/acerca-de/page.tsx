@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import SystemInfo from "@/app/acerca-de/_components/system-info";
+import Roadmap from "@/app/acerca-de/_components/roadmap";
 
 export default function AcercaDePage() {
   return (
@@ -123,6 +124,7 @@ export default function AcercaDePage() {
             </p>
           </CardContent>
         </Card>
+        <Roadmap />
         <SystemInfo />
       </div>
     </div>

@@ -11,7 +11,7 @@ const ImportanteCard = () => {
   return (
     <>
       {showImportante && (
-        <div className="w-full max-w-2xl">
+        <div className="w-full max-w-3xl">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center justify-between">

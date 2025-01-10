@@ -9,13 +9,13 @@ export default function Home() {
       <ImportanteCard />
       <div className="text-center">
         <SigemLogoWithTitle />
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto mt-4">
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
           El Sistema Integral de Gestión Municipal (SIGEM) de la ciudad de San
           Luis es una plataforma diseñada para facilitar a los ciudadanos la
           realización de trámites de manera sencilla y eficiente.
         </p>
       </div>
-      <div className="w-full max-w-2xl space-y-8">
+      <div className="w-full max-w-3xl space-y-8">
         <TramitesSinCuentaCard />
         <TramitesConCuentaCard />
       </div>
