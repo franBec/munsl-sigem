@@ -6,7 +6,7 @@ const SigemLogoWithTitle = () => {
   return (
     <>
       <SigemLogo />
-      <h1 className="text-4xl font-bold tracking-tight">
+      <h1 className="text-4xl font-bold tracking-tight text-center">
         Sistema Integral de Gestión Municipal
       </h1>
     </>

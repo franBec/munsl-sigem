@@ -7,7 +7,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
-import { CalendarIcon, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const milestones: {
   title: string;
@@ -15,50 +15,50 @@ const milestones: {
   description: string;
 }[] = [
   {
-    title: "Project Initialization",
+    title: "Inicialización del Proyecto",
     date: "30/12/2024",
     description:
-      "Initial setup with Next.js, including src folder structure and Prettier configuration.",
+      "Configuración inicial con Next.js, incluyendo la estructura de la carpeta src y la configuración de Prettier.",
   },
   {
-    title: "UI Framework Implementation",
+    title: "Implementación del Marco de UI",
     date: "30/12/2024",
     description:
-      "Integrated shadcn UI components and implemented dark mode support.",
+      "Integración de componentes UI de shadcn y soporte para modo oscuro.",
   },
   {
-    title: "Core Layout and Navigation",
+    title: "Diseño Principal y Navegación",
     date: "31/12/2024",
     description:
-      "Developed the main layout, sidebar menu, and improved the municipal shield logo.",
+      "Desarrollado el diseño principal, el menú de la barra lateral y mejorado el logotipo del escudo municipal.",
   },
   {
-    title: "Authentication System",
+    title: "Sistema de Autenticación",
     date: "07/01/2025",
     description:
-      "Implemented NextAuth for user authentication and sign-out functionality.",
+      "Implementación de NextAuth para autenticación de usuarios y funcionalidad de cierre de sesión.",
   },
   {
-    title: "Error Handling and Loading States",
+    title: "Manejo de Errores y Estados de Carga",
     date: "07/01/2025",
     description:
-      "Added error boundaries and loading placeholders for better user experience.",
+      "Añadidos límites de error y marcadores de carga para una mejor experiencia del usuario.",
   },
   {
-    title: "Backend Integration",
+    title: "Integración con Backend",
     date: "08/01/2025",
     description:
-      "Connected to backend API, implemented version fetching and error handling for no connection.",
+      "Conexión con la API del backend, implementación de la obtención de versiones y manejo de errores por falta de conexión.",
   },
   {
-    title: "UI Enhancements",
-    date: "Today",
+    title: "Mejoras de UI",
+    date: "10/01/2025",
     description:
-      "Improved home page, about section, and municipal shield component. Added filtering to the sidebar.",
+      "Mejorada la página principal, la sección 'Acerca de' y el componente del escudo municipal. Añadido filtrado a la barra lateral.",
   },
 ];
 
-const Roadmap = () => {
+const RoadmapCard = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -74,7 +74,7 @@ const Roadmap = () => {
         >
           <CollapsibleTrigger asChild>
             <Button variant="outline" className="w-full justify-between">
-              Details
+              Detalles
               {isOpen ? (
                 <ChevronUp className="h-4 w-4" />
               ) : (
@@ -90,7 +90,6 @@ const Roadmap = () => {
                     <CardTitle className="text-sm font-medium">
                       {milestone.title}
                     </CardTitle>
-                    <CalendarIcon className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">{milestone.date}</div>
@@ -107,4 +106,4 @@ const Roadmap = () => {
     </Card>
   );
 };
-export default Roadmap;
+export default RoadmapCard;

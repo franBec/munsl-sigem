@@ -1,13 +1,14 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import SystemInfo from "@/app/acerca-de/_components/system-info";
-import Roadmap from "@/app/acerca-de/_components/roadmap";
+import SystemInfoCard from "@/app/acerca-de/_components/system-info-card";
+import RoadmapCard from "@/app/acerca-de/_components/roadmap-card";
 
-export default function AcercaDePage() {
+export default function Page() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Acerca del proyecto</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
+      <h1 className="text-4xl font-bold tracking-tight">Acerca del proyecto</h1>
 
-      <div className="space-y-6">
+      <div className="w-full max-w-3xl space-y-8 overflow-x-hidden">
+        <SystemInfoCard />
         <Card>
           <CardHeader>
             <CardTitle>Objetivo del Proyecto</CardTitle>
@@ -68,7 +69,6 @@ export default function AcercaDePage() {
             </ol>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader>
             <CardTitle>Limitaciones</CardTitle>
@@ -86,46 +86,7 @@ export default function AcercaDePage() {
             </ul>
           </CardContent>
         </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Código y Licencia</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              Aún no se ha definido una licencia para este proyecto. Es de mi
-              personal interés que fuera de licencia pública. Si el código
-              permanece abierto, la licencia será especificada en futuras
-              actualizaciones del repositorio.
-            </p>
-            <p>
-              <ul className="list-disc list-inside">
-                <li>
-                  <a
-                    href="https://github.com/franBec/munsl_sigem"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 underline"
-                  >
-                    munsl_sigem (Frontend)
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/franBec/munsl_sigem_backend"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 underline"
-                  >
-                    munsl_sigem_backend (Backend)
-                  </a>
-                </li>
-              </ul>
-            </p>
-          </CardContent>
-        </Card>
-        <Roadmap />
-        <SystemInfo />
+        <RoadmapCard />
       </div>
     </div>
   );

@@ -6,7 +6,9 @@ import ImportanteCard from "@/components/home/importante-card";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
-      <ImportanteCard />
+      <div className="w-full max-w-3xl">
+        <ImportanteCard />
+      </div>
       <div className="text-center">
         <SigemLogoWithTitle />
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
