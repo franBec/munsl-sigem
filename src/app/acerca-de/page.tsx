@@ -1,111 +1,130 @@
-"use client";
-import packageJson from "../../../package.json";
-import { SigemLogoWithTitle } from "@/components/logo/sigem-logo";
-import { useGetActuatorInfo } from "@/__generated__/api/munsl_sigem_backend/munsl-sigem-backend-api";
-import { ErrorDetails } from "@/components/layout/error-boundary";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import SystemInfo from "@/app/acerca-de/_components/system-info";
 
-const Page = () => {
-  const {
-    isPending,
-    isError,
-    data: response,
-    error,
-  } = useGetActuatorInfo({
-    axios: { baseURL: process.env.NEXT_PUBLIC_API_MUNSL_SIGEM_BACKEND_URL },
-  });
-
-  const backendVersion = response?.data.build?.version || "-";
-  const backendStatus = isError ? "No hay conexión" : "OK";
-
+export default function AcercaDePage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 space-y-12">
-      <div>
-        <SigemLogoWithTitle />
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6">Acerca del proyecto</h1>
+
+      <div className="space-y-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>Objetivo del Proyecto</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">
+              Este proyecto es un <strong>MVP (Producto Mínimo Viable)</strong>{" "}
+              de una posible reescritura del sistema{" "}
+              <a
+                href="https://sigem.sanluislaciudad.gob.ar/"
+                className="text-blue-600 hover:underline"
+              >
+                SIGEM
+              </a>
+              .
+            </p>
+            <p className="mb-4">
+              El objetivo principal es crear una representación fiel del
+              funcionamiento actual de SIGEM mientras se sientan las bases para
+              una futura modernización. Este MVP forma parte de la primera fase
+              de una serie de mejoras planificadas, que incluyen:
+            </p>
+            <ol className="list-decimal list-inside mb-4">
+              <li className="mb-2">
+                <strong>Migración de la lógica de negocio:</strong>
+                <ul className="list-disc list-inside ml-6">
+                  <li>De Java 8 a Java 21.</li>
+                  <li>
+                    Abandonar el monolito basado en{" "}
+                    <a
+                      href="https://grails.org/"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Grails
+                    </a>
+                    .
+                  </li>
+                  <li>
+                    Adoptar una arquitectura separada de frontend (Next.js 14) y
+                    backend (Groovy Spring Boot 3).
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Prioridad en la representación actual:</strong>
+                <ul className="list-disc list-inside ml-6">
+                  <li>
+                    Dado el alcance y la complejidad de esta transición, el
+                    objetivo inicial es replicar el comportamiento actual de
+                    manera fiel.
+                  </li>
+                  <li>
+                    Algunas &#34;mejores prácticas&#34; no se implementarán en
+                    esta etapa debido a limitaciones de tiempo y compatibilidad.
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Limitaciones</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside">
+              <li>
+                Este proyecto es un MVP y no refleja el estado final de la
+                modernización planificada.
+              </li>
+              <li>
+                Algunas prácticas y estructuras heredadas han sido mantenidas
+                para garantizar una transición gradual.
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Código y Licencia</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">
+              Aún no se ha definido una licencia para este proyecto. Es de mi
+              personal interés que fuera de licencia pública. Si el código
+              permanece abierto, la licencia será especificada en futuras
+              actualizaciones del repositorio.
+            </p>
+            <p>
+              <ul className="list-disc list-inside">
+                <li>
+                  <a
+                    href="https://github.com/franBec/munsl_sigem"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 underline"
+                  >
+                    munsl_sigem (Frontend)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/franBec/munsl_sigem_backend"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 underline"
+                  >
+                    munsl_sigem_backend (Backend)
+                  </a>
+                </li>
+              </ul>
+            </p>
+          </CardContent>
+        </Card>
+        <SystemInfo />
       </div>
-      <table className="table-auto border-collapse border border-gray-400">
-        <thead>
-          <tr>
-            <th className="border border-foreground px-4 py-2">Proyecto</th>
-            <th className="border border-foreground px-4 py-2">Rol</th>
-            <th className="border border-foreground px-4 py-2">Tecnología</th>
-            <th className="border border-foreground px-4 py-2">Versión</th>
-            <th className="border border-foreground px-4 py-2">Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="border border-foreground px-4 py-2">
-              <a
-                href="https://github.com/franBec/munsl_sigem"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline"
-              >
-                munsl_sigem
-              </a>
-            </td>
-            <td className="border border-foreground px-4 py-2">Frontend</td>
-            <td className="border border-foreground px-4 py-2">
-              Next.js 14.2.16
-            </td>
-            <td className="border border-foreground px-4 py-2">
-              {packageJson.version}
-            </td>
-            <td className="border border-foreground px-4 py-2">OK</td>
-          </tr>
-          <tr>
-            <td className="border border-foreground px-4 py-2">
-              <a
-                href="https://github.com/franBec/munsl_sigem_backend"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline"
-              >
-                munsl_sigem_backend
-              </a>
-            </td>
-            <td className="border border-foreground px-4 py-2">Backend</td>
-            <td className="border border-foreground px-4 py-2">
-              Groovy Spring Boot 3.4.0
-            </td>
-            <td className="border border-foreground px-4 py-2">
-              {isPending ? (
-                <span className="animate-pulse bg-gray-300 rounded w-16 h-4 inline-block"></span>
-              ) : (
-                backendVersion
-              )}
-            </td>
-            <td className="border border-foreground px-4 py-2">
-              {isPending ? (
-                <span className="animate-pulse bg-gray-300 rounded w-8 h-4 inline-block"></span>
-              ) : (
-                backendStatus
-              )}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {error && (
-        <div className="max-w-xl w-full mx-auto">
-          <ErrorDetails error={error} />
-        </div>
-      )}
-      <p className="mt-8 text-center text-sm text-muted-foreground">
-        Made with love by{" "}
-        <a
-          href="https://pollito.dev/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline"
-        >
-          Pollito{" "}
-          <span role="img" aria-label="chick">
-            🐤
-          </span>
-        </a>
-      </p>
     </div>
   );
-};
-
-export default Page;
+}

@@ -2,7 +2,7 @@
 
 ![escudo municipal](/public/escudo-municipal-blanco-2x.png)
 
-Este proyecto es un **MVP (Producto Mínimo Viable)** de una posible reescritura del backend del sistema [SIGEM](https://sigem.sanluislaciudad.gob.ar/).
+Este proyecto es un **MVP (Producto Mínimo Viable)** de una posible reescritura del frontend del sistema [SIGEM](https://sigem.sanluislaciudad.gob.ar/).
 
 ## Objetivo del Proyecto
 
@@ -35,11 +35,13 @@ Aún no se ha definido una licencia pública para este proyecto. Si el código p
 
 Este proyecto utiliza [pnpm](https://pnpm.io/) como gestor de paquetes. Para iniciar el entorno de desarrollo, sigue estos pasos:
 
-1. Instala las dependencias del proyecto:
+1. Asegúrate de tener un archivo `.env` con las variables de entorno necesarias. Puedes usar `.env.example` como base.
+
+2. Instala las dependencias del proyecto:
 ```bash
 pnpm install
 ```
-2. Inicia el servidor de desarrollo:
+3. Inicia el servidor de desarrollo:
 ```bash
 pnpm run dev
 ```
