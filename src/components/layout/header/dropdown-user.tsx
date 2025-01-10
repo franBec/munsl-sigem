@@ -20,17 +20,34 @@ export function DropdownUser({
   user,
 }: {
   user: {
-    name: string;
-    dniCuil: string;
-    avatar: string;
+    name: string | undefined;
+    dniCuil: string | undefined;
+    avatar: string | undefined;
   };
 }) {
   const router = useRouter();
 
-  function cerrarSesion() {
+  const cerrarSesion = () => {
     signOut({ redirect: false });
     router.push("/");
-  }
+  };
+
+  const truncateText = (
+    text: string | undefined,
+    maxLength: number
+  ): string => {
+    if (!text) return "";
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
+
+  const getAvatarFallback = (name: string | undefined): string => {
+    if (!name) return "¿?";
+    const words = name.trim().split(/\s+/);
+    if (words.length > 1) {
+      return words[0][0].toUpperCase() + words[1][0].toUpperCase();
+    }
+    return name.slice(0, 2).toUpperCase();
+  };
 
   return (
     <DropdownMenu>
@@ -41,10 +58,14 @@ export function DropdownUser({
         >
           <Avatar className="h-8 w-8 rounded-lg">
             <AvatarImage src={user.avatar} alt={user.name} />
-            <AvatarFallback className="rounded-lg">FB</AvatarFallback>
+            <AvatarFallback className="rounded-lg">
+              {getAvatarFallback(user.name)}
+            </AvatarFallback>
           </Avatar>
           <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold">{user.name}</span>
+            <span className="truncate font-semibold">
+              {truncateText(user.name, 30)}
+            </span>
             <span className="truncate text-xs">{user.dniCuil}</span>
           </div>
           <ChevronsUpDown className="ml-auto size-4" />
@@ -58,7 +79,7 @@ export function DropdownUser({
       >
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/usuario-ciudad/perfil">
+            <Link href="/usuario-ciudad/mi-perfil">
               <User />
               Mi Perfil
             </Link>

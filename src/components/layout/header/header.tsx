@@ -4,12 +4,13 @@ import { Separator } from "@/components/ui/separator";
 import ModeToggle from "@/components/dark-mode/mode-toogle";
 import { DropdownUser } from "@/components/layout/header/dropdown-user";
 import { useSession } from "next-auth/react";
-import * as React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { enhanceUser } from "@/components/next-auth/enhance-user";
 
 const Header = () => {
   const { data: session } = useSession();
+  const user = session?.user ? enhanceUser(session.user) : null;
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between px-4 gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b-2">
@@ -21,13 +22,9 @@ const Header = () => {
         {session ? (
           <DropdownUser
             user={{
-              name:
-                session.user.usuario_displayname ||
-                session.user.usuarioCiudad_persona_firstName,
-              dniCuil:
-                session.user.usuario_dni ||
-                session.user.usuarioCiudad_persona_cuil,
-              avatar: session.user?.image || "/default-avatar.jpg",
+              name: user?.getUserName(),
+              dniCuil: user?.getUserDniCuil(),
+              avatar: user?.getFotoPerfil(),
             }}
           />
         ) : (
