@@ -1005,6 +1005,23 @@ export class MenuHandler {
     return this;
   }
 
+  getTramitesItems = (): MenuGroup["items"] => {
+    return this.menu
+      .filter(menuGroup => menuGroup.label === "Trámites")
+      .flatMap(menuGroup =>
+        menuGroup.items.map(item => ({
+          ...item,
+          urls: item.urls.filter(
+            url =>
+              !url.requiresCitizenLogin &&
+              !url.permission &&
+              url.title !== "Requisitos"
+          ),
+        }))
+      )
+      .filter(item => item.urls.length > 0);
+  };
+
   getMenu(): MenuGroup[] {
     return this.menu;
   }
