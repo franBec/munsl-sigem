@@ -15,46 +15,52 @@ const milestones: {
   description: string;
 }[] = [
   {
-    title: "Inicialización del Proyecto",
-    date: "30/12/2024",
+    title: "Initial Project Setup",
+    date: "2024-12-30",
     description:
-      "Configuración inicial con Next.js, incluyendo la estructura de la carpeta src y la configuración de Prettier.",
+      "Established the project with Next.js for frontend and Spring Boot for backend. Initial commits included layouts, dark mode, and basic configurations.",
   },
   {
-    title: "Implementación del Marco de UI",
-    date: "30/12/2024",
+    title: "Error Handling and Logging",
+    date: "2025-01-06",
     description:
-      "Integración de componentes UI de shadcn y soporte para modo oscuro.",
+      "Implemented error boundaries in frontend and enhanced backend logging with sanitization.",
   },
   {
-    title: "Diseño Principal y Navegación",
-    date: "31/12/2024",
+    title: "User Authentication Features",
+    date: "2025-01-07",
     description:
-      "Desarrollado el diseño principal, el menú de la barra lateral y mejorado el logotipo del escudo municipal.",
+      "Integrated NextAuth for frontend authentication. Introduced JWT.",
   },
   {
-    title: "Sistema de Autenticación",
-    date: "07/01/2025",
+    title: "Backend API Improvements",
+    date: "2025-01-08",
     description:
-      "Implementación de NextAuth para autenticación de usuarios y funcionalidad de cierre de sesión.",
+      "Improved CORS configuration, and added version management workflows.",
   },
   {
-    title: "Manejo de Errores y Estados de Carga",
-    date: "07/01/2025",
+    title: "UI/UX Updates and State Management",
+    date: "2025-01-08",
     description:
-      "Añadidos límites de error y marcadores de carga para una mejor experiencia del usuario.",
+      "Filtering functionality in the sidebar. Introduced state management for important features.",
   },
   {
-    title: "Integración con Backend",
-    date: "08/01/2025",
+    title: "Version Management and Deployment",
+    date: "2025-01-08",
     description:
-      "Conexión con la API del backend, implementación de la obtención de versiones y manejo de errores por falta de conexión.",
+      "Automated versioning workflow for the backend using GitHub Actions. Released initial stable backend versions with updated README documentation.",
   },
   {
-    title: "Mejoras de UI",
-    date: "10/01/2025",
+    title: "Documentation and Code Quality",
+    date: "2025-01-08",
     description:
-      "Mejorada la página principal, la sección 'Acerca de' y el componente del escudo municipal. Añadido filtrado a la barra lateral.",
+      "Updated backend and frontend README files, prettified OpenAPI specifications, and addressed several linting and type errors in the codebase.",
+  },
+  {
+    title: "Frontend Enhancements and Responsiveness",
+    date: "2025-01-10",
+    description:
+      "Improved responsive design across various pages like 'acerca-de', implemented home cards, and added a roadmap feature.",
   },
 ];
 
